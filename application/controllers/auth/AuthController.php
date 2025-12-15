@@ -16,6 +16,8 @@ class AuthController extends CI_Controller {
 
     public function login(){
         $post = $this->input->post();
+
+        redirect('home');
     }
 
     public function logout()

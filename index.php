@@ -53,7 +53,30 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+	// define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+	$production_hosts = [
+		'auzenworksy.com',
+		'www.auzenworksy.com'
+	];
+
+	// Check the hostname and set the ENVIRONMENT constant
+	if (isset($_SERVER['HTTP_HOST']) && in_array($_SERVER['HTTP_HOST'], $production_hosts))
+	{
+		define('ENVIRONMENT', 'production');
+	}
+	elseif (isset($_SERVER['HTTP_HOST']) && strpos($_SERVER['HTTP_HOST'], 'dev.') !== false)
+	{
+		define('ENVIRONMENT', 'development'); // Use a dev subdomain like dev.auzenworksy.com
+	}
+	elseif (isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] === 'localhost' ||strpos($_SERVER['HTTP_HOST'], 'localhost:') === 0)
+	{
+		define('ENVIRONMENT', 'development'); // For local machine
+	}
+	else
+	{
+		// Default to production for security if the host is not explicitly defined
+		define('ENVIRONMENT', 'production');
+	}
 
 /*
  *---------------------------------------------------------------

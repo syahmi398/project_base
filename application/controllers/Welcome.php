@@ -5,7 +5,6 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		// pr('test');
-		$this->load->view('welcome_message');
+		redirect('authentication');
 	}
 }

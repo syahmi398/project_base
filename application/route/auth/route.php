@@ -1,0 +1,17 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+/*
+| -------------------------------------------------------------------------
+| URI ROUTING
+| -------------------------------------------------------------------------
+|  
+| Author : Syahmi
+| Description : This is custom route made by syahmi refer to config/route.php
+| Date : 28/6/2022
+|
+*/
+$route['authentication'] = 'auth/authcontroller';
+$route['authentication/login'] = 'auth/authcontroller/login';
+$route['login'] = 'auth/authcontroller';
+$route['authentication/logout'] = 'auth/authcontroller/logout';
